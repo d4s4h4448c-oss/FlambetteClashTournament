@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flambette Clash Tournament</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Flambette Clash Tournament</h1>
+        <input type="number" id="playerCount" min="4" max="32" placeholder="Nombre de joueurs" />
+        <button id="generateTournament">Générer le tournoi</button>
+        <button id="resetTournament">Reset tournoi</button>
+        <button id="newTournament">Nouveau tournoi</button>
+        <button id="captureTournament">📸 Capturer le tournoi</button>
+        
+        <div id="bracket">
+            <div id="upperBracket" class="bracket">
+                <h2>Upper Bracket</h2>
+                <div id="upperMatches"></div>
+            </div>
+            <div id="lowerBracket" class="bracket">
+                <h2>Lower Bracket</h2>
+                <div id="lowerMatches"></div>
+            </div>
+            <div id="finalMatch" class="final-match">
+                <h2>Finale</h2>
+                <div id="final"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

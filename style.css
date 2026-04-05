@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+input, button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #5533cc;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #7755ff;
+}
+
+.bracket {
+    margin: 20px auto;
+    display: inline-block;
+}
+
+.match {
+    margin: 10px 0;
+    background-color: #29293d;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.input-score {
+    width: 50px;
+}
+
+.winner {
+    background-color: #28a745;
+    box-shadow: 0 0 10px #28a745;
+}
+
+.loser {
+    background-color: #dc3545;
+}
+
+.final-match {
+    margin-top: 30px;
+    display: none;
+}
