@@ -29,20 +29,48 @@ button:hover {
     background-color: #7755ff;
 }
 
+#bracket {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
 .bracket {
-    margin: 20px auto;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
 }
 
 .match {
-    margin: 10px 0;
+    position: relative;
+    margin: 10px;
     background-color: #29293d;
     padding: 10px;
     border-radius: 5px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.match::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    height: 2px;
+    width: 30px;
+    background-color: #ffffff;
+    transform: translateY(-50%);
+}
+
+.match:last-child::after {
+    display: none; /* Hide the line after the last match */
 }
 
 .input-score {
     width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .winner {
@@ -57,4 +85,8 @@ button:hover {
 .final-match {
     margin-top: 30px;
     display: none;
+}
+
+.h2 {
+    margin-bottom: 20px;
 }
