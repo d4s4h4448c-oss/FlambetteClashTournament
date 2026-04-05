@@ -41,10 +41,14 @@ function renderMatches(matches, container) {
         const matchDiv = document.createElement('div');
         matchDiv.classList.add('match');
         matchDiv.innerHTML = `
-            <input type="text" value="${match[0]}" />
-            <input type="number" class="input-score" id="score${index}1" placeholder="Score" />
-            <input type="text" value="${match[1]}" />
-            <input type="number" class="input-score" id="score${index}2" placeholder="Score" />
+            <div>
+                <input type="text" value="${match[0]}" />
+                <input type="number" class="input-score" id="score${index}1" placeholder="Score" />
+            </div>
+            <div>
+                <input type="text" value="${match[1]}" />
+                <input type="number" class="input-score" id="score${index}2" placeholder="Score" />
+            </div>
             <button onclick="validateMatch(${index})">Valider le match</button>
         `;
         container.appendChild(matchDiv);
@@ -67,25 +71,22 @@ function validateMatch(index) {
 
 function updateMatch(winner, loser, bracket, index) {
     const upperMatches = document.getElementById('upperMatches');
-    const lowerMatches = document.getElementById('lowerMatches');
     const matchElement = upperMatches.children[index];
 
     matchElement.classList.add('winner');
     matchElement.querySelectorAll('input')[0].style.backgroundColor = '#28a745';
     matchElement.querySelectorAll('input')[2].style.backgroundColor = '#dc3545';
 
-    if (bracket === 'upper') {
-        // Move winner to next round
-        const nextRoundIndex = Math.floor(index / 2);
-        if (!upperBracket[nextRoundIndex]) {
-            upperBracket[nextRoundIndex] = [winner];
-        } else {
-            upperBracket[nextRoundIndex].push(winner);
-        }
-        // Move loser to lower bracket
-        lowerBracket.push(loser); // add to lower bracket
-        renderLowerBracket();
+    // Move winner to next round
+    const nextRoundIndex = Math.floor(index / 2);
+    if (!upperBracket[nextRoundIndex]) {
+        upperBracket[nextRoundIndex] = [winner];
+    } else {
+        upperBracket[nextRoundIndex].push(winner);
     }
+    // Move loser to lower bracket
+    lowerBracket.push(loser); // add to lower bracket
+    renderLowerBracket();
 }
 
 function renderLowerBracket() {
@@ -95,10 +96,14 @@ function renderLowerBracket() {
         const matchDiv = document.createElement('div');
         matchDiv.classList.add('match');
         matchDiv.innerHTML = `
-            <input type="text" value="${player}" />
-            <input type="number" class="input-score" id="lowerScore${index}1" placeholder="Score" />
-            <input type="text" value="Perdant ${index + 1}" />
-            <input type="number" class="input-score" id="lowerScore${index}2" placeholder="Score" />
+            <div>
+                <input type="text" value="${player}" />
+                <input type="number" class="input-score" id="lowerScore${index}1" placeholder="Score" />
+            </div>
+            <div>
+                <input type="text" value="Perdant ${index + 1}" />
+                <input type="number" class="input-score" id="lowerScore${index}2" placeholder="Score" />
+            </div>
             <button onclick="validateLowerMatch(${index})">Valider match lower</button>
         `;
         lowerMatches.appendChild(matchDiv);
@@ -110,7 +115,6 @@ function validateLowerMatch(index) {
     const score2 = parseInt(document.getElementById(`lowerScore${index}2`).value) || 0;
 
     if (score1 > score2) {
-        // Logic to handle winner and elimination
         alert(`${document.getElementById(`lowerScore${index}1`).value} gagne !`);
     } else {
         alert(`${document.getElementById(`lowerScore${index}2`).value} gagne !`);
